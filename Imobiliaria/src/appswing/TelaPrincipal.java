@@ -24,8 +24,8 @@ import regras_negocio.Fachada;
 
 public class TelaPrincipal {
 	private JFrame frame;
-	private JMenu mnParticipante;
-	private JMenu mnEvento;
+	private JMenu mnImovel;
+	private JMenu mnVenda;
 	private JLabel label;
 
 	/**
@@ -83,19 +83,17 @@ public class TelaPrincipal {
 		label.setIcon(imagem);
 		frame.getContentPane().add(label);
 
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
-		mnCliente = new JMenu("Clientes");
-		mnCliente.addMouseListener(new MouseAdapter() {
+		mnImovel = new JMenu("Vendas");
+		mnImovel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaClientes tela = new TelaClientes();
+				TelaImoveis tela = new TelaImoveis();
 			}
 		});
-		menuBar.add(mnCliente);
+		menuBar.add(mnVenda);
 
-		mnEvento = new JMenu("Vendas");
-		mnEvento.addMouseListener(new MouseAdapter() {
+		mnVenda = new JMenu("Vendas");
+		mnVenda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				TelaVendas tela = new TelaVendas();
