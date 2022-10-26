@@ -1,6 +1,7 @@
 package daodb4o;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.query.Query;
@@ -27,11 +28,19 @@ public class DAOCorretor  extends DAO<Corretor>{
 		manager.store( obj );
 	}
 	
-	public int consultarVendasCorretor() {
+	public List<String> consultarVendasCorretor() {
 		Query q = manager.query();
 		q.constrain(Corretor.class);
 		q.descend("qntdVendas").constrain(3).smaller().not();
-		return q.execute().size();
+		
+		List<Corretor> corretores = q.execute();
+		List<String> nomes = new ArrayList<>();
+		
+		for (Corretor c : corretores)
+			nomes.add(c.getNome());
+
+		// return q.execute().size();
+		return nomes;
 	}
 }
 

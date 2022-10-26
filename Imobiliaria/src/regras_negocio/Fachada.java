@@ -146,75 +146,75 @@ public class Fachada {
 		return ev;
 	}
 
-	public static void 	adicionarClienteVenda(String nome, int id) throws Exception {
-		nome = nome.trim();
+//	public static void 	adicionarClienteVenda(String nome, int id) throws Exception {
+//		nome = nome.trim();
+//
+//		DAO.begin();
+//		//localizar participante no repositorio, usando o nome 
+//		Cliente p = daocliente.read(nome);
+//		if(p == null)  {
+//			DAO.rollback();
+//			throw new Exception("N�o adicionou Cliente " + nome + " - inexistente");
+//		}
+//
+//		//localizar evento no repositorio, usando id 
+//		Venda ev = daovenda.read(id);
+//		if(ev == null)  {
+//			DAO.rollback();
+//			throw new Exception("N�o adicionou Cliente "+nome+ " - venda " + id + " inexistente");
+//		}
+//
+//		//localizar o participante dentro do evento, usando o nome
+//		Cliente paux = ev.localizar(nome);
+//		if(paux != null) {
+//			DAO.rollback(); 
+//			throw new Exception("N�o adicionou participante " + nome + " - j� participa do evento " + id);
+//		}
+//		//adicionar o participante ao evento
+////		ev.adicionar(p);
+//		//adicionar o evento ao participante
+//		p.adicionar(ev);
+//
+//		//atualizar objetos no banco
+//		daovenda.update(ev);
+//		daocliente.update(paux);
+//		DAO.commit();
+//	}
 
-		DAO.begin();
-		//localizar participante no repositorio, usando o nome 
-		Cliente p = daocliente.read(nome);
-		if(p == null)  {
-			DAO.rollback();
-			throw new Exception("N�o adicionou Cliente " + nome + " - inexistente");
-		}
-
-		//localizar evento no repositorio, usando id 
-		Venda ev = daovenda.read(id);
-		if(ev == null)  {
-			DAO.rollback();
-			throw new Exception("N�o adicionou Cliente "+nome+ " - venda " + id + " inexistente");
-		}
-
-		//localizar o participante dentro do evento, usando o nome
-		Cliente paux = ev.localizar(nome);
-		if(paux != null) {
-			DAO.rollback(); 
-			throw new Exception("N�o adicionou participante " + nome + " - j� participa do evento " + id);
-		}
-		//adicionar o participante ao evento
-		ev.adicionar(p);
-		//adicionar o evento ao participante
-		p.adicionar(ev);
-
-		//atualizar objetos no banco
-		daovenda.update(ev);
-		daocliente.update(paux);
-		DAO.commit();
-	}
-
-	public static void 	removerClienteVenda(String nome, int id) throws Exception {
-		nome = nome.trim();
-
-		DAO.begin();
-		//localizar participante no repositorio, usando o nome 
-		Cliente p = daocliente.read(nome);
-		if(p == null)  {
-			DAO.rollback();
-			throw new Exception("N�o removeu cliente " + nome + " - inexistente");
-		}
-
-		//localizar evento no repositorio, usando id 
-		Venda ev = daovenda.read(id);
-		if(ev == null)  {
-			DAO.rollback();
-			throw new Exception("N�o removeu Cliente " + nome +" -  Venda " + id + " inexistente");
-		}
-
-		//localizar o participante dentro do evento, usando o nome
-		Cliente paux = ev.localizar(nome);
-		if(paux == null)  {
-			DAO.rollback();
-			throw new Exception("N�o removeu participante " + nome + " - nao participa do evento " + id);
-		}
-		//remover o participante do evento
-		ev.remover(p);
-		//remover o evento do participante
-		p.remover(ev);
-
-		//atualizar objetos no banco
-		daovenda.update(ev);
-		daocliente.update(p);
-		DAO.commit();
-	}
+//	public static void 	removerClienteVenda(String nome, int id) throws Exception {
+//		nome = nome.trim();
+//
+//		DAO.begin();
+//		//localizar participante no repositorio, usando o nome 
+//		Cliente p = daocliente.read(nome);
+//		if(p == null)  {
+//			DAO.rollback();
+//			throw new Exception("N�o removeu cliente " + nome + " - inexistente");
+//		}
+//
+//		//localizar evento no repositorio, usando id 
+//		Venda ev = daovenda.read(id);
+//		if(ev == null)  {
+//			DAO.rollback();
+//			throw new Exception("N�o removeu Cliente " + nome +" -  Venda " + id + " inexistente");
+//		}
+//
+//		//localizar o participante dentro do evento, usando o nome
+//		Cliente paux = ev.localizar(nome);
+//		if(paux == null)  {
+//			DAO.rollback();
+//			throw new Exception("N�o removeu participante " + nome + " - nao participa do evento " + id);
+//		}
+//		//remover o participante do evento
+////		ev.remover(p);
+//		//remover o evento do participante
+//		p.remover(ev);
+//
+//		//atualizar objetos no banco
+//		daovenda.update(ev);
+//		daocliente.update(p);
+//		DAO.commit();
+//	}
 
 	public static void apagarVenda(int id) throws Exception	{
 
@@ -227,10 +227,10 @@ public class Fachada {
 		}
 		
 		//Remover este evento de todos os participantes e atualizar participante 
-		for(Cliente p : ev.getClientes()) {
-			p.remover(ev);
-			daocliente.update(p);
-		}
+//		for(Cliente p : ev.getClientes()) {
+//			p.remover(ev);
+//			daocliente.update(p);
+//		}
 		
 		//apagar evento no banco
 		daovenda.delete(ev);
@@ -260,7 +260,7 @@ public class Fachada {
 		DAO.commit();
 	}
 
-	public static void 	apagarCliente(String nome) throws Exception {
+	public static void apagarCliente(String nome) throws Exception {
 		nome = nome.trim();
 
 		DAO.begin();
@@ -285,15 +285,19 @@ public class Fachada {
 	 * CONSULTAS
 	 */
 	
-	public static List<Venda> consultarVendaNClientes(int n){
-		return daovenda.consultarVendaNClientes(n);
+	// public static List<Venda> consultarVendaNClientes(int n){
+	// 	return daovenda.consultarVendaNClientes(n);
+	// }
+
+	public static List<String> consultarClienteCorretorVenda(int id) {
+		return daovenda.consultarClienteCorretorVenda(id);
 	}
 	
-	public static int consultarVendasCorretor() {
+	public static List<String> consultarVendasCorretor() {
 		return daocorretor.consultarVendasCorretor();
 	}
 
-	public static int consultarRendaMaior() {
+	public static List<String> consultarRendaMaior() {
 		return daocliente.consultarRendaMaior();
 	}
 }

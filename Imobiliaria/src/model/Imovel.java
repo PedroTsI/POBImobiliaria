@@ -2,7 +2,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Imovel extends Venda {
+public class Imovel {
 	private String endereco;
 	private int numero;
 	private String complemento;
@@ -15,8 +15,8 @@ public class Imovel extends Venda {
 	private int id;
 	private List<Pessoa> proprietarios = new ArrayList<>();
 	
-	public Imovel(String endereco, int numero, String complemento, String bairro, String cidade, String estado, String tipoimov ,String tipo, String tipopagamento, int valorpagamento, int idVenda) {
-		super(tipo, tipopagamento, valorpagamento, idVenda);
+	public Imovel(String endereco, int numero, String complemento, String bairro, String cidade, String estado, String tipoimov) {
+		// super(tipo, tipopagamento, valorpagamento, idVenda);
 		this.bairro = bairro;    
 		this.cidade = cidade;
 		this.complemento = complemento;

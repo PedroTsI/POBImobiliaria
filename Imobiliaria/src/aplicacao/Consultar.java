@@ -12,21 +12,20 @@ public class Consultar {
 			Venda venda = Fachada.localizarVenda(1);
 			System.out.println("localizou evento:\n" + venda);
 			
-			System.out.println("\n---------participantes com nome z -----");
-			for(Cliente p : Fachada.listarClientes("z")) 
+			System.out.println("\n---------participantes com nome joao -----");
+			for(Cliente p : Fachada.listarClientes("joao")) 
 				System.out.println(p);
 			
-			System.out.println("\n---------eventos com 5 participantes");
-			for(Venda v : Fachada.consultarVendaNClientes(5)) 
-				System.out.println(v);
-			System.out.println("\n---------eventos com 0 participantes");
-			for(Venda v : Fachada.consultarVendaNClientes(0)) 
-				System.out.println(v);
-			
+//			System.out.println("\n---------eventos com 5 participantes");
+//			for(Venda v : Fachada.consultarVendaNClientes(5)) 
+//				System.out.println(v);
+//			System.out.println("\n---------eventos com 0 participantes");
+//			for(Venda v : Fachada.consultarVendaNClientes(0)) 
+//				System.out.println(v);
+			System.out.println("\n---------Cliente e Corretor da Venda de id 1" + Fachada.consultarClienteCorretorVenda(1));
 			System.out.println("\n---------Total de vendas do Corretor: " + Fachada.consultarVendasCorretor()); 
 			System.out.println("\n---------total de clinte de renda maior a 1000 (renda >= 1000) "+Fachada.consultarRendaMaior());
 		
-			
 		} catch (Exception e) {
 			System.out.println("--->"+e.getMessage());
 		}	

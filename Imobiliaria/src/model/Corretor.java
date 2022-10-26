@@ -8,6 +8,7 @@ public class Corretor extends Pessoa {
 	private double salarioFixo;
 	private double comissao;
 	private int qntdVendas;
+
 	public Corretor(String nome, int idade, String telefone, int creci, double salarioFixo, double comissao, int qntdVendas) {
 		super(nome, idade, telefone);
 		this.creci = creci;
@@ -15,9 +16,10 @@ public class Corretor extends Pessoa {
 		this.comissao = comissao;
 		this.qntdVendas = qntdVendas;
 	}
-	public Corretor(String nome, int idade, String telefone, int creci) {
+	public Corretor(String nome, int idade, String telefone, int creci, int qntdVendas) {
 		super(nome, idade, telefone);
 		this.creci = creci;
+		this.qntdVendas = qntdVendas;
 	}
 	public void setCreci(int creci) {
 		this.creci = creci;

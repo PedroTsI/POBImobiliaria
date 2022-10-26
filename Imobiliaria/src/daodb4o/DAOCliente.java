@@ -1,6 +1,7 @@
 package daodb4o;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.db4o.query.Query;
@@ -27,11 +28,19 @@ public class DAOCliente  extends DAO<Cliente>{
 		obj.setId(novoId);				//atualizar id do objeto antes de grava-lo no banco
 		manager.store( obj );
 	}
-	public int consultarRendaMaior() {
+	public List<String> consultarRendaMaior() {
 		Query q = manager.query();
 		q.constrain(Cliente.class);
-		q.descend("renda").constrain(1000).greater().not();
-		return q.execute().size();
+		q.descend("renda").constrain(1000).greater();
+
+		List<Cliente> clientes = q.execute();
+		List<String> nomes = new ArrayList<>();
+		
+		for (Cliente c : clientes)
+			nomes.add(c.getNome());
+
+		// return q.execute().size();
+		return nomes;
 	}
 	public List<Cliente> readAll(String nome){
 		manager.ext().purge();  	//limpar cache do manager
