@@ -55,6 +55,24 @@ public class Imovel {
 		return numero;
 	}
 
+	public String getComplemento() {
+		return complemento;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public String getTipoimov() {
+		return tipoimov;
+	}
+	public Pessoa getCorretor() {
+		return corretor;
+	}
 	@Override
 	public String toString() {
 		return "Endereco:" + endereco + ", Numero:" + numero +", Cidade:" + cidade + "Tipo de Imovel: " + tipoimov + ", Proprietario:"

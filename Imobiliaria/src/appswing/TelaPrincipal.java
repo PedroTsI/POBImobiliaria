@@ -24,9 +24,10 @@ import regras_negocio.Fachada;
 
 public class TelaPrincipal {
 	private JFrame frame;
-	private JMenu mnParticipante;
-	private JMenu mnEvento;
+	private JMenu mnImovel;
+	private JMenu mnVenda;
 	private JLabel label;
+	private JMenuBar menuBar;
 
 	/**
 	 * Launch the application.
@@ -61,6 +62,9 @@ public class TelaPrincipal {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
+		
+		menuBar = new JMenuBar();
+		frame.setJMenuBar(menuBar);
 
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -83,22 +87,20 @@ public class TelaPrincipal {
 		label.setIcon(imagem);
 		frame.getContentPane().add(label);
 
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
-		mnCliente = new JMenu("Clientes");
-		mnCliente.addMouseListener(new MouseAdapter() {
+		mnImovel = new JMenu("Imoveis");
+		mnImovel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaClientes tela = new TelaClientes();
+				TelaImovel tela = new TelaImovel();
 			}
 		});
-		menuBar.add(mnCliente);
+		menuBar.add(mnImovel);
 
-		mnEvento = new JMenu("Vendas");
-		mnEvento.addMouseListener(new MouseAdapter() {
+		mnVenda = new JMenu("Vendas");
+		mnVenda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				TelaVendas tela = new TelaVendas();
+				TelaVenda tela = new TelaVenda();
 			}
 		});
 		menuBar.add(mnVenda);

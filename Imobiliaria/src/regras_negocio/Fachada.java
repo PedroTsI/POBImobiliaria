@@ -26,6 +26,7 @@ public class Fachada {
 	private static DAOCliente daocliente = new DAOCliente();  
 	private static DAOCorretor daocorretor = new DAOCorretor(); 
 	private static DAOVenda daovenda = new DAOVenda();  
+	private static DAOImovel daoimovel = new DAOImovel();
 
 	public static void inicializar(){
 		DAO.open();
@@ -49,6 +50,12 @@ public class Fachada {
 	public static List<Corretor> listarCorretor() {
 		DAO.begin();
 		List<Corretor> result = daocorretor.readAll();
+		DAO.commit();
+		return result;
+	}
+	public static List<Imovel> listarImovel() {
+		DAO.begin();
+		List<Imovel> result = daoimovel.readAll();
 		DAO.commit();
 		return result;
 	}
@@ -119,7 +126,9 @@ public class Fachada {
 		return c;	
 	}
 
-	public static Venda criarVenda (String tipo, String tipopagamento, int valorpagamento, int id) throws Exception {
+	public static Venda criarVenda(String tipo, String tipopagamento, int valorpagamento, int id) throws Exception {
+		
+		//Colocar cpf e creci como chave do cliente e corretor criar venda
 		tipo = tipo.trim();
 		tipopagamento = tipopagamento.trim();
 		
@@ -238,7 +247,7 @@ public class Fachada {
 	}
 
 	public static void aumentoDaVenda(int id, int valorpagamento, int novoValor) throws Exception	{
-
+		//não precisa do valorpagamento, pois já existe no banco
 		DAO.begin();
 		//localizar evento no repositorio, usando data 
 		Venda ev = daovenda.read(id);
